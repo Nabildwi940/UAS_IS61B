@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\MobilController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +25,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/', [MobilController::class, 'index'])->name('mobil.index');
+Route::get('/create', [MobilController::class, 'create'])->name('mobil.create');
+Route::post('/store', [MobilController::class, 'store'])->name('mobil.store');
+
+Route::get('/mobils', [MobilController::class, 'index'])->name('mobil.index');
+
+Route::get('/mobil/{id}', [MobilController::class, 'show'])->name('mobil.show');
+Route::get('/mobil/{id}/edit', [MobilController::class, 'edit'])->name('mobil.edit');
+Route::delete('/mobil/{id}', [MobilController::class, 'destroy'])->name('mobil.destroy');
+Route::put('/mobil/{id}', [MobilController::class, 'update'])->name('mobil.update');
