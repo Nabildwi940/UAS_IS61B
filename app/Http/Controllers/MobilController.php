@@ -29,8 +29,8 @@ class MobilController extends Controller
             'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $imageName = time().'.'.$request->gambar->extension();  
-        $request->gambar->move(public_path('images'), $imageName);
+        $imageName = time().'.'.$request->file('gambar')->extension();  
+        $request->file('gambar')->move(public_path('images'), $imageName);
 
         $mobil = new Mobil();
         $mobil->nama = $request->nama;
@@ -76,8 +76,8 @@ class MobilController extends Controller
         $mobil->nopol = $request->nopol;
 
         if ($request->hasFile('gambar')) {
-            $imageName = time().'.'.$request->gambar->extension();  
-            $request->gambar->move(public_path('images'), $imageName);
+            $imageName = time().'.'.$request->file('gambar')->extension();  
+            $request->file('gambar')->move(public_path('images'), $imageName);
             $mobil->gambar = $imageName;
         }
 
