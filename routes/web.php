@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MobilController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,13 +19,6 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/', [MobilController::class, 'index'])->name('mobil.index');
 Route::get('/create', [MobilController::class, 'create'])->name('mobil.create');
@@ -36,3 +30,9 @@ Route::get('/mobil/{id}', [MobilController::class, 'show'])->name('mobil.show');
 Route::get('/mobil/{id}/edit', [MobilController::class, 'edit'])->name('mobil.edit');
 Route::delete('/mobil/{id}', [MobilController::class, 'destroy'])->name('mobil.destroy');
 Route::put('/mobil/{id}', [MobilController::class, 'update'])->name('mobil.update');
+
+Route::get('/profile', function () {
+    return view('profile');
+});
+
+Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');

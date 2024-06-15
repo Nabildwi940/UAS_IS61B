@@ -1,9 +1,35 @@
-<!-- resources/views/layouts/components/navbar.blade.php -->
-
-<div class="navbar">
-    <ul>
-        <li><a href="{{ route('home') }}">Home</a></li>
-        <li><a href="{{ route('about') }}">About</a></li>
-        <li><a href="{{ route('contact') }}">Contact</a></li>
-    </ul>
-</div>
+<!-- Navbar content -->
+<nav class="navbar top-navbar navbar-expand-md navbar-light">
+    <!-- Logo -->
+    <div class="navbar-header">
+        <a class="navbar-brand" href="{{ route('mobil.index') }}">
+            <b><img src="{{ asset('assets/images/logo-icon.png') }}" alt="homepage" class="dark-logo" /></b>
+            <span><img src="{{ asset('assets/images/logo-text.png') }}" alt="homepage" class="dark-logo" /></span>
+        </a>
+    </div>
+    <!-- End Logo -->
+    <!-- Navbar toggler and nav items -->
+    <div class="navbar-collapse">
+        <!-- Navbar left -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+        </ul>
+        <!-- Navbar right -->
+        <ul class="navbar-nav my-lg-0">
+            <!-- Search box -->
+            <li class="nav-item hidden-xs-down search-box">
+                <a class="nav-link hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
+                <form class="app-search">
+                    <input type="text" class="form-control" placeholder="Search & enter">
+                    <a class="srh-btn"><i class="ti-close"></i></a>
+                </form>
+            </li>
+            <!-- Profile picture -->
+            <li class="nav-item">
+                <a class="nav-link waves-effect waves-dark" href="#">
+                    <img src="{{ asset('assets/images/users/1.jpg') }}" alt="user" class="profile-pic" />
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
