@@ -1,40 +1,40 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard Admin')
-
 @section('content')
-<div class="content">
-    <h1>Selamat Datang Admin</h1>
-
-    <div class="search-bar">
-        <input type="text" placeholder="Cari">
-        <button>Cari</button>
-    </div>
-
-    <div class="sort-bar">
-        <label>Urutkan berdasarkan</label>
-        <select>
-            <option value="tahun">Tahun</option>
-        </select>
-        <select>
-            <option value="tertinggi">Tertinggi</option>
-            <option value="terendah">Terendah</option>
-        </select>
-        <button>Urutkan</button>
-    </div>
-
-    <div class="card-container">
-        @foreach($mobil as $m)
-            <div class="card">
-                <img src="{{ asset('images/' . $m->gambar) }}" alt="{{ $m->nama }}">
-                <h3>{{ $m->nama }}</h3>
-                <p>Rp{{ number_format($m->harga, 0, ',', '.') }}</p>
-                <p>Tahun: {{ $m->tahun }}</p>
-                <p>Warna: {{ $m->warna }}</p>
-                <p>Nopol: {{ $m->nopol }}</p>
-                <button>Details</button>
+<div id="main-wrapper">
+    <div class="page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="text-themecolor mb-4">Dashboard</h3>
+                </div>
             </div>
-        @endforeach
+            <div class="row">
+                <!-- Mobil Tersedia -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="card card-info">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div class="stat">
+                                    <h3 class="card-title">{{ $mobils->count() }}</h3>
+                                    <p class="card-text">Mobil Tersedia</p>
+                                </div>
+                                <div class="ml-auto">
+                                    <i class="fas fa-car fa-3x"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="{{ route('mobil.index') }}" class="btn btn-primary btn-sm">Lihat Detail <i class="fas fa-arrow-circle-right ml-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Mobil Tersedia -->
+                
+                <!-- Tambahkan card lainnya di sini sesuai kebutuhan -->
+                
+            </div>
+        </div>
     </div>
 </div>
 @endsection

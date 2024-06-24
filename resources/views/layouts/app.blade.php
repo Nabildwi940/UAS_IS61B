@@ -1,7 +1,5 @@
-<!-- resources/views/layouts/app.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,20 +7,23 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/favicon.png') }}">
-    <title>@yield('title')</title>
+    <title>@yield('title', 'Dashboard')</title>
+    <!-- Bootstrap Core CSS -->
     <link href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/plugins/chartist-js/dist/chartist.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/plugins/c3-master/c3.min.css') }}" rel="stylesheet">
+    <!-- AdminLTE CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/pages/dashboard.css') }}" rel="stylesheet">
+    <!-- Custom Color CSS -->
     <link href="{{ asset('css/colors/default-dark.css') }}" id="theme" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-
 <body class="fix-header fix-sidebar card-no-border">
     <div id="main-wrapper">
         <header class="topbar">
@@ -75,8 +76,8 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark" href="{{ url('/table') }}" aria-expanded="false">
-                                <i class="mdi mdi-table"></i><span class="hide-menu">Table</span>
+                            <a class="sidebar-link waves-effect waves-dark" href="{{ route('mobil.index') }}" aria-expanded="false">
+                                <i class="mdi mdi-car"></i><span class="hide-menu">Mobil</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -85,18 +86,8 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark" href="{{ url('/map') }}" aria-expanded="false">
-                                <i class="mdi mdi-earth"></i><span class="hide-menu">Map</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark" href="{{ url('/blank') }}" aria-expanded="false">
-                                <i class="mdi mdi-book-open-variant"></i><span class="hide-menu">Blank</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark" href="{{ url('/404') }}" aria-expanded="false">
-                                <i class="mdi mdi-help-circle"></i><span class="hide-menu">404</span>
+                            <a class="sidebar-link waves-effect waves-dark" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="mdi mdi-power"></i><span class="hide-menu">Log Out</span>
                             </a>
                         </li>
                     </ul>
@@ -114,12 +105,24 @@
             </div>
         </div>
     </div>
+    <!-- All Jquery -->
     <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
+    <!-- Bootstrap tether Core JavaScript -->
     <script src="{{ asset('assets/plugins/bootstrap/js/popper.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/perfect-scrollbar.jquery.min.js') }}"></script>
-    <script src="{{ asset('js/waves.js') }}"></script>
-    <script src="{{ asset('js/sidebarmenu.js') }}"></script>
+    <!-- AdminLTE App -->
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>
+    <!-- Custom JavaScript -->
     <script src="{{ asset('js/custom.min.js') }}"></script>
+    <!-- Script for logout form -->
+    <script>
+        function logout() {
+            event.preventDefault();
+            document.getElementById('logout-form').submit();
+        }
+    </script>
 </body>
 </html>
+<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    @csrf
+</form>
