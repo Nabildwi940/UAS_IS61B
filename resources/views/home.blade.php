@@ -12,27 +12,57 @@
             <div class="row">
                 <!-- Mobil Tersedia -->
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="card card-info">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div class="stat">
-                                    <h3 class="card-title">{{ $mobils->count() }}</h3>
-                                    <p class="card-text">Mobil Tersedia</p>
-                                </div>
-                                <div class="ml-auto">
-                                    <i class="fas fa-car fa-3x"></i>
-                                </div>
-                            </div>
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3>{{ $mobils->count() }}</h3>
+                            <p>Mobil Tersedia</p>
                         </div>
-                        <div class="card-footer">
-                            <a href="{{ route('mobil.index') }}" class="btn btn-primary btn-sm">Lihat Detail <i class="fas fa-arrow-circle-right ml-1"></i></a>
+                        <div class="icon">
+                            <i class="fas fa-car"></i>
                         </div>
+                        <a href="{{ route('mobils.index') }}" class="small-box-footer">
+                            Lihat Detail <i class="fas fa-arrow-circle-right"></i>
+                        </a>
                     </div>
                 </div>
                 <!-- End Mobil Tersedia -->
+
+                <!-- Pembeli -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3>{{ $jumlahPembeli }}</h3>
+                            <p>Pembeli Terdaftar</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <a href="{{ route('pembeli.index') }}" class="small-box-footer">
+                            Lihat Detail <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- End Pembeli -->
                 
+                <!-- Transaksi -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>{{ $jumlahTransaksi }}</h3>
+                            <p>Transaksi</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <a href="{{ route('transaksi.index') }}" class="small-box-footer">
+                            Lihat Detail <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- End Transaksi -->
+
                 <!-- Tambahkan card lainnya di sini sesuai kebutuhan -->
-                
+
             </div>
         </div>
     </div>

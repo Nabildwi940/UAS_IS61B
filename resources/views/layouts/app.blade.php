@@ -23,6 +23,227 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .card img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .card h3 {
+            margin: 10px 0;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .button-container a,
+        .button-container form button {
+            margin-top: 10px;
+            flex-grow: 1;
+            margin-right: 5px;
+        }
+        .button-container form button {
+            margin-right: 0;
+        }
+        /* Menggunakan font yang lebih menarik */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Styling untuk gambar */
+.img-thumbnail {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+/* Styling untuk judul dan teks */
+h1 {
+    font-size: 2.5rem;
+    color: #2C3E50;
+    font-weight: bold;
+}
+
+.font-weight-bold {
+    font-weight: 700;
+}
+
+.font-italic {
+    font-style: italic;
+}
+
+.text-primary {
+    color: #3498DB;
+}
+
+/* Styling tombol */
+.btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.btn-secondary {
+    background-color: #95A5A6;
+    border: none;
+}
+
+.btn-warning {
+    background-color: #F39C12;
+    border: none;
+}
+
+.btn-danger {
+    background-color: #E74C3C;
+    border: none;
+}
+
+.btn-secondary, .btn-warning, .btn-danger {
+    color: white;
+}
+
+.btn-secondary:hover, .btn-warning:hover, .btn-danger:hover {
+    opacity: 0.8;
+}
+.price-label {
+    font-size: 1.2rem;
+    color: #2C3E50;
+}
+
+.price-amount {
+    font-size: 1.5rem;
+    color: #E74C3C;
+    font-weight: bold;
+}
+/* Untuk memberikan style pada card */
+.card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-img-top {
+    border-bottom: 1px solid #ddd;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    color: #333;
+}
+
+.card-text p {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+/* Styling untuk card pembeli */
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.card-text strong {
+    color: #333;
+}
+
+.btn-success, .btn-danger {
+    border-radius: 4px;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.modal-content {
+    border-radius: 8px;
+}
+
+.modal-header {
+    border-bottom: 1px solid #dee2e6;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    border-top: 1px solid #dee2e6;
+}
+
+.close {
+    font-size: 1.5rem;
+}
+
+        .navbar {
+            background-color: #4A55A2 !important;
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            color: #ffffff; /* Adjust text color if needed */
+        }
+
+        .navbar-light .navbar-brand {
+            color: #ffffff; /* Adjust logo color if needed */
+        }
+    
+    </style>
 </head>
 <body class="fix-header fix-sidebar card-no-border">
     <div id="main-wrapper">
@@ -30,8 +251,8 @@
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <b><img src="{{ asset('assets/images/logo-icon.png') }}" alt="homepage" class="dark-logo" /></b>
-                        <span><img src="{{ asset('assets/images/logo-text.png') }}" alt="homepage" class="dark-logo" /></span>
+                    <b><img src="{{ asset('assets/images/logo.png') }}" style="width: 120px; height: 50px;" alt="homepage" class="dark-logo" /></b>
+                        
                     </a>
                 </div>
                 <div class="navbar-collapse">
@@ -66,7 +287,7 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark" href="{{ url('/') }}" aria-expanded="false">
+                            <a class="sidebar-link waves-effect waves-dark" href="#" aria-expanded="false">
                                 <i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
@@ -76,13 +297,18 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark" href="{{ route('mobil.index') }}" aria-expanded="false">
+                            <a class="sidebar-link waves-effect waves-dark" href="{{ route('mobils.index') }}" aria-expanded="false">
                                 <i class="mdi mdi-car"></i><span class="hide-menu">Mobil</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark" href="{{ url('/icons') }}" aria-expanded="false">
-                                <i class="mdi mdi-emoticon"></i><span class="hide-menu">Icons</span>
+                            <a class="sidebar-link waves-effect waves-dark" href="{{ route('pembeli.index') }}" aria-expanded="false">
+                                <i class="mdi mdi-account-multiple"></i><span class="hide-menu">Pembeli</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark" href="{{ route('transaksi.index') }}" aria-expanded="false">
+                                <i class="fa fa-money"></i><span class="hide-menu">Transaksi</span>
                             </a>
                         </li>
                         <li class="sidebar-item">

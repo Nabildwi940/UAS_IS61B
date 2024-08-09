@@ -5,38 +5,47 @@ use App\Http\Controllers\MobilController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PembeliController;
+use App\Http\Controllers\TransaksiController;
 
 Auth::routes();
 
-// Rute beranda
-Route::get('/', [HomeController::class, 'index'])->name('home');
+// Redirect root URL to user.index
+Route::get('/', [UserController::class, 'index'])->name('user.index');
 
-// Rute untuk halaman mobil
+// Admin routes
 Route::middleware(['auth'])->group(function () {
-    Route::get('/mobils', [MobilController::class, 'index'])->name('mobil.index');
-    Route::get('/mobil/create', [MobilController::class, 'create'])->name('mobil.create');
-    Route::post('/mobil/store', [MobilController::class, 'store'])->name('mobil.store');
-    Route::get('/mobil/{id}', [MobilController::class, 'show'])->name('mobil.show');
-    Route::get('/mobil/{id}/edit', [MobilController::class, 'edit'])->name('mobil.edit');
-    Route::put('/mobil/{id}', [MobilController::class, 'update'])->name('mobil.update');
-    Route::delete('/mobil/{id}', [MobilController::class, 'destroy'])->name('mobil.destroy');
+    Route::resource('mobils', MobilController::class);
 });
-// Di routes/web.php
-Route::get('/home', 'HomeController@index')->name('home');
 
-// Rute untuk halaman profil
+// Redirect authenticated users to the home page
+Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
+
+// Profile route
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile')->middleware('auth');
 
-// Rute untuk logout
+// Logout route
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+// Login route
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+
+// User page
+Route::get('/user', [UserController::class, 'index'])->name('user.index');
+
+// Buyer routes
+Route::resource('pembeli', PembeliController::class);
+
+// Transaction routes
+Route::resource('transaksi', TransaksiController::class);
+
+// Route untuk User
+Route::get('/user', [UserController::class, 'index'])->name('user.index');
+
+// Route untuk Transaksi
+Route::resource('transaksi', TransaksiController::class);
+
+// Route untuk Mobil
+Route::resource('mobil', MobilController::class);
+Route::resource('mobils', MobilController::class);

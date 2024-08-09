@@ -157,3 +157,40 @@ button {
     border-color: #dc3545; /* warna border tombol danger */
 }
 
+/* Style for the card image */
+.card-img-top {
+    object-fit: cover;
+    height: 200px; /* Adjust the height as needed */
+    width: 100%; /* Ensure image covers the width of the card */
+}
+
+/* Style for the card body text */
+.card-body .card-text p {
+    margin-bottom: 0.5rem; /* Reduce the space between lines */
+    font-size: 0.9rem; /* Slightly smaller font size for a compact look */
+}
+
+/* Style for the card title (car name) */
+.card-title {
+    font-weight: bold;
+    font-size: 1.25rem; /* Adjust size as needed */
+    margin-bottom: 1rem; /* Space below the title */
+}
+
+/* Style for the card button container */
+.d-flex {
+    align-items: center;
+}
+
+.btn-sm {
+    font-size: 0.8rem; /* Smaller font size for buttons */
+}
+
+.mt-3 {
+    margin-top: 1rem; /* Space above the buttons */
+}
+
+/* Optional: Add spacing between cards */
+.mb-4 {
+    margin-bottom: 1.5rem; /* Space below each card */
+}

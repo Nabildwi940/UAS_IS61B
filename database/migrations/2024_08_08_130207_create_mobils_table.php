@@ -10,12 +10,17 @@ class CreateMobilsTable extends Migration
     {
         Schema::create('mobils', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            $table->string('nama_mobil');
             $table->integer('harga');
             $table->integer('tahun');
             $table->string('warna');
             $table->string('nopol');
-            $table->string('gambar');
+            $table->integer('kilometer');
+            $table->string('bahan_bakar');
+            $table->integer('cc_mesin');
+            $table->string('transmisi');
+            $table->integer('jumlah_seat');
+            $table->text('deskripsi');
             $table->timestamps();
         });
     }
@@ -25,4 +30,3 @@ class CreateMobilsTable extends Migration
         Schema::dropIfExists('mobils');
     }
 }
-
