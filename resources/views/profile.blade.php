@@ -1,42 +1,25 @@
-    @extends('layouts.app')
+@extends('layouts.app')
 
-    @section('title', 'Profile')
 
-    @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
+@section('content')
+<div class="container d-flex justify-content-center align-items-center" style="height: 65vh;">
+    <div class="card shadow" style="width: 100%; max-width: 400px; border: shadow;">
+        <div class="card-header text-center" style="background-color: #111A54; color: white; font-weight: bold;">
+            Profil
+        </div>
+        <div class="card-body">
             @if(Auth::check())
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <img src="{{ Auth::user()->profile_picture }}" class="rounded-circle mb-3" width="150" />
-                        <h4 class="card-title">{{ Auth::user()->name }}</h4>
-                        <h6 class="card-subtitle text-muted">{{ Auth::user()->job_title }}</h6>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <div class="form-group text-left">
+                        <label for="name" class="col-form-label">Nama</label>
+                        <input type="text" id="name" value="{{ Auth::user()->name }}" class="form-control" readonly>
                     </div>
                 </div>
-                <div class="card mt-4">
-                    <div class="card-body">
-                        <form class="form-horizontal">
-                            <div class="form-group">
-                                <label for="name" class="col-form-label">Nama</label>
-                                <input type="text" id="name" value="{{ Auth::user()->name }}" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="email" class="col-form-label">Email</label>
-                                <input type="email" id="email" value="{{ Auth::user()->email }}" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="password" class="col-form-label">Password</label>
-                                <input type="password" id="password" value="password" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="phone" class="col-form-label">No Hp</label>
-                                <input type="text" id="phone" value="{{ Auth::user()->phone }}" class="form-control">
-                            </div>
-                            <div class="form-group text-center">
-                                <button class="btn btn-success">Update Profile</button>
-                            </div>
-                        </form>
+                <div class="col-md-12">
+                    <div class="form-group text-left">
+                        <label for="email" class="col-form-label">Email</label>
+                        <input type="email" id="email" value="{{ Auth::user()->email }}" class="form-control" readonly>
                     </div>
                 </div>
             </div>
@@ -45,4 +28,5 @@
             @endif
         </div>
     </div>
-    @endsection
+</div>
+@endsection

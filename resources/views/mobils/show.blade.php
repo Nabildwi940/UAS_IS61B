@@ -1,41 +1,42 @@
 @extends('layouts.app')
 
-@section('title', 'Detail Mobil')
-
 @section('content')
-<div id="main-wrapper">
-    <div class="page-wrapper" style="margin-left: 0; padding-top: 10px;">
-        <div class="container-fluid" style="padding-left: 0;">
-            <div class="card">
-                <div class="card-header">
-                    <h3>{{ $mobil->nama_mobil }}</h3>
-                </div>
-                <div class="card-body">
-                    <p>Harga: Rp. {{ number_format($mobil->harga, 0, ',', '.') }}</p>
-                    <p>Tahun: {{ $mobil->tahun }}</p>
-                    <p>Warna: {{ $mobil->warna }}</p>
-                    <p>Nomor Polisi: {{ $mobil->nopol }}</p>
-                    <p>Kilometer: {{ $mobil->kilometer }}</p>
-                    <p>Bahan Bakar: {{ $mobil->bahan_bakar }}</p>
-                    <p>CC Mesin: {{ $mobil->cc_mesin }}</p>
-                    <p>Transmisi: {{ $mobil->transmisi }}</p>
-                    <p>Jumlah Seat: {{ $mobil->jumlah_seat }}</p>
-                    <p>Deskripsi: {{ $mobil->deskripsi }}</p>
-                    
-                    @if ($mobil->images->count())
-                        <div class="row">
-                            @foreach ($mobil->images as $image)
-                                <div class="col-md-4">
-                                    <img src="{{ Storage::url($image->path) }}" class="img-fluid" alt="{{ $mobil->nama_mobil }}">
-                                </div>
-                            @endforeach
-                        </div>
-                    @endif
+<div class="container">
+    <h1 class="mb-4">{{ $mobil->nama_mobil }}</h1>
 
-                    <a href="{{ route('mobils.index') }}" class="btn btn-secondary mt-3">Kembali ke Daftar Mobil</a>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            @if($mobil->images->count() > 0)
+                @foreach($mobil->images as $image)
+                    <img src="{{ Storage::url($image->path) }}" alt="{{ $mobil->nama_mobil }}" class="img-thumbnail mb-3">
+                @endforeach
+            @else
+                <p>Tidak ada gambar untuk mobil ini.</p>
+            @endif
         </div>
+        <div class="col-md-6">
+            <p class="font-weight-bold text-primary">Harga: Rp{{ number_format($mobil->harga, 0, ',', '.') }}</p>
+            <p class="font-weight-bold">Tahun: {{ $mobil->tahun }}</p>
+            <p class="font-weight-bold">Warna: {{ $mobil->warna }}</p>
+            <p class="font-weight-bold">Nopol: {{ $mobil->nopol }}</p>
+            <p class="font-weight-bold">CC Mesin: {{ $mobil->cc_mesin }}</p>
+            <p class="font-weight-bold">Kilometer: {{ $mobil->kilometer }}</p>
+            <p class="font-weight-bold">Bahan Bakar: {{ $mobil->bahan_bakar }}</p>
+            <p class="font-weight-bold">Transmisi: {{ $mobil->transmisi }}</p>
+            <p class="font-weight-bold">Jumlah Seat: {{ $mobil->jumlah_seat }}</p>
+            <p class="font-italic">{{ $mobil->deskripsi }}</p>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a href="{{ route('mobils.index') }}" class="btn btn-secondary">Kembali</a>
+        <a href="{{ route('mobils.edit', $mobil->id) }}" class="btn btn-warning">Edit</a>
+
+        <form action="{{ route('mobils.destroy', $mobil->id) }}" method="POST" style="display:inline-block;">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger">Hapus</button>
+        </form>
     </div>
 </div>
 @endsection

@@ -7,23 +7,22 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&family=Kanit:wght@400;700&family=KoHo:wght@400;700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Caveat:wght@400..700&display=swap" rel="stylesheet">
 
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Karla', sans-serif;
             background: linear-gradient(to right, #3F4B93, #2F364D);
+            color: white;
             margin: 0;
             padding: 0;
-            color: white;
         }
         .navbar {
             background-color: #4A55A2;
             padding: 10px 20px;
             display: flex;
             align-items: center;
-            font-family: 'Karla', sans-serif;
         }
         .navbar img {
             height: 50px;
@@ -53,39 +52,33 @@
             margin-right: 3px;
             vertical-align: middle;
         }
-        .main-content {
-            text-align: center;
+        .container {
             padding: 20px;
-            font-family: 'Kanit', sans-serif;
-        }
-        .main-content h2 {
-            color: #FFFFFF;
         }
         .card-container {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
             justify-content: center;
-            padding: 20px;
         }
         .card {
-            width: 250px;
+            width: 100%;
+            max-width: 350px;
             border: 1px solid #ddd;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             background-color: white;
-            margin-bottom: 20px;
             color: black;
             font-family: 'KoHo', sans-serif;
         }
         .card img {
             width: 100%;
-            height: 150px;
+            height: 200px;
             object-fit: cover;
         }
         .card-body {
-            padding: 10px;
+            padding: 15px;
             text-align: left;
         }
         .card-body h3 {
@@ -97,22 +90,18 @@
             font-size: 14px;
             margin: 5px 0;
         }
-        .detail-button {
-            width: 100%;
-            text-align: center;
+        .btn-info {
             background-color: #4A55A2;
-            color: white;
-            padding: 10px;
-            text-decoration: none;
-            border: none;
-            border-radius: 0 0 8px 8px;
-            cursor: pointer;
+            border-color: #4A55A2;
+        }
+        .btn-info:hover {
+            background-color: #3f4a8a;
+            border-color: #3f4a8a;
         }
     </style>
 </head>
 <body>
     <div class="navbar">
-       
         <img src="{{ asset('assets/images/logo.png') }}" alt="Logo">
         <div class="navbar-brand text-center">Mobil Garasi Kampus</div>
         <a href="{{ route('login') }}" class="btn btn-primary ml-auto">Login</a>

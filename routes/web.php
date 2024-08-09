@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PembeliController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\RegisterController;
 
 Auth::routes();
 
@@ -49,3 +50,6 @@ Route::resource('transaksi', TransaksiController::class);
 // Route untuk Mobil
 Route::resource('mobil', MobilController::class);
 Route::resource('mobils', MobilController::class);
+
+Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register.form');
+Route::post('register', [RegisterController::class, 'register'])->name('register');

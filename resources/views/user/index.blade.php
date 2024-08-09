@@ -4,11 +4,11 @@
 
 @section('content')
 <div class="container text-center mt-4">
-    <h1 class="mb-2" style="font-family: 'Bebas Neue', sans-serif; line-height: 1.2;">Mobil Garasi Kampus</h1>
-        
-    <p class="lead text-left" style="font-family: 'Playfair Display', serif; font-size: 1.5rem; line-height: 1;">Temukan Mobil Impian Anda dengan Harga Terjangkau</p>
-    
-    <p class="text-white mb-5 text-left" style="font-family: 'Caveat', cursive; font-size: 1.4rem; line-height: 0.8;">Pilihan Mobil Bekas Berkualitas di Sini!</p>
+    <h1 class="mb-4" style="font-family: 'Bebas Neue', sans-serif; line-height: 0.0;">Mobil Garasi Kampus</h1>
+
+    <p class="lead text-left" style="font-family: 'Playfair Display', serif; font-size: 1.5rem; line-height: 1.5;">Temukan Mobil Impian Anda dengan Harga Terjangkau</p>
+
+    <p class="text-white mb-5 text-left" style="font-family: 'Caveat', cursive; font-size: 1.4rem;">Pilihan Mobil Bekas Berkualitas di Sini!</p>
 
     @if (session('success'))
         <div class="alert alert-success">
@@ -19,19 +19,17 @@
     <div class="row">
         @foreach ($mobils as $m)
             <div class="col-md-3 mb-4">
-                <div class="card">
-                    <!-- Menampilkan gambar mobil dengan ukuran 250x250 -->
-                    <img src="{{ Storage::url($m->images->first()->path) }}" class="card-img-top" alt="{{ $m->nama_mobil }}" style="width: 250px; height: 250px; object-fit: cover; margin: 0 auto;">
+                <div class="card shadow-sm">
+                    <img src="{{ Storage::url($m->images->first()->path) }}" class="card-img-top" alt="{{ $m->nama_mobil }}" style="height: 200px; object-fit: cover;">
 
                     <div class="card-body">
                         <h5 class="card-title font-weight-bold">{{ $m->nama_mobil }}</h5>
-                        <div class="card-text">
-                            <p class="mb-1"><strong>Tahun:</strong> {{ $m->tahun }}</p>
-                            <p class="mb-1"><strong>Harga:</strong> Rp{{ number_format($m->harga, 0, ',', '.') }}</p>
-                            <p class="mb-1"><strong>Bahan Bakar:</strong> {{ $m->bahan_bakar }}</p>
-                            <p class="mb-1"><strong>Transmisi:</strong> {{ $m->transmisi }}</p>
-                        </div>
-                        <!-- Tombol yang memicu modal -->
+                        <p class="card-text">
+                            <strong>Tahun:</strong> {{ $m->tahun }}<br>
+                            <strong>Harga:</strong> Rp{{ number_format($m->harga, 0, ',', '.') }}<br>
+                            <strong>Bahan Bakar:</strong> {{ $m->bahan_bakar }}<br>
+                            <strong>Transmisi:</strong> {{ $m->transmisi }}
+                        </p>
                         <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail{{ $m->id }}">
                             Detail
                         </button>
@@ -41,19 +39,19 @@
 
             <!-- Modal Detail -->
             <div class="modal fade" id="detail{{ $m->id }}" tabindex="-1" aria-labelledby="detailLabel{{ $m->id }}" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="detailLabel{{ $m->id }}">Detail {{ $m->nama_mobil }}</h5>
+                            <h5 class="modal-title text-dark" id="detailLabel{{ $m->id }}">Detail {{ $m->nama_mobil }}</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <div class="text-center">
-                                <img src="{{ Storage::url($m->images->first()->path) }}" alt="{{ $m->nama_mobil }}" style="width: 250px; height: 250px; object-fit: cover;" class="mb-3">
+                            <div class="text-center mb-3">
+                                <img src="{{ Storage::url($m->images->first()->path) }}" alt="{{ $m->nama_mobil }}" class="img-fluid" style="max-height: 400px; object-fit: cover;">
                             </div>
-                            <table class="table table-striped">
+                            <table class="table table-bordered table-striped">
                                 <tbody>
                                     <tr>
                                         <td><strong>Nama:</strong></td>
@@ -111,7 +109,7 @@
 @endsection
 
 @section('scripts')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 @endsection
