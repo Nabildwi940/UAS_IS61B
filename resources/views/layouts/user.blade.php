@@ -110,8 +110,8 @@
         <a href="https://www.instagram.com/mobil_garasikampus" target="_blank">
             <img src="{{ asset('assets/images/instagram-icon.png') }}" alt="Instagram"> @mobil_garasikampus
         </a>
-        <a href="tel:085277281998">
-            <img src="{{ asset('assets/images/whatsapp-icon.png') }}" alt="WhatsApp"> 085277281998
+        <a href="https://wa.me/6285324406815">
+            <img src="{{ asset('assets/images/whatsapp-icon.png') }}" alt="WhatsApp"> 085324406815
         </a>
     </div>
     <div class="container">
